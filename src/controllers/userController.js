@@ -11,14 +11,14 @@ async function signup(req, res) {
 
 async function createPermission(req, res) {
   const { title, description, hours_from, hours_to } = req.body;
-  const id = await Permission.create({
+  const newId = await Permission.create({
     user_id: req.user.id,
     title,
     description,
     hours_from,
     hours_to
   });
-  res.status(201).json({ id });
+  res.status(201).json({ id: newId });
 }
 
 async function getAllPermissions(req, res) {
